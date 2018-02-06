@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -23,7 +24,25 @@ namespace AsyncApp
                 return await ConvertXmlToNews(result);
             }
         }
-        
+
+        public async Task<List<News>> GetNews(string category, CancellationToken token)
+        {
+            await Task.Delay(3000,token);
+
+            //token.ThrowIfCancellationRequested();
+
+            using (HttpClient client = new HttpClient())
+            {
+                InitializeClient(client);
+                HttpResponseMessage response = await client.GetAsync(category, token);
+                if (!response.IsSuccessStatusCode) return new List<News>();
+
+                string result = await response.Content.ReadAsStringAsync();
+
+                return await ConvertXmlToNews(result);
+            }
+        }
+
         private static void InitializeClient(HttpClient client)
         {
             client.BaseAddress = new Uri("http://www.neworleanssaints.com/cda-web/rss-module.htm?");

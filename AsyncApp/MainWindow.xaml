@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:AsyncApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="634.211" Width="1196.021">
-    <Grid Background="#FFB7BDCB">
+    <Grid Background="#FFB7BDCB" Margin="0,-1,0,1">
 
-        <Button x:Name="taskBtn" Content="Fetch Data (with Task)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="229" RenderTransformOrigin="0.004,-0.503" Height="95" FontSize="18" FontWeight="Bold" FontFamily="Calibri" Click="taskBtn_Click"/>
-        <Button x:Name="AwaitBtn" Content="Fetch Data (with await)" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Width="229" Height="104" FontFamily="Calibri" FontSize="18" FontWeight="Bold" Click="AwaitBtn_Click"/>
-        <Button x:Name="ClearBtn" Content="Clear Data" HorizontalAlignment="Left" Margin="10,529,0,0" VerticalAlignment="Top" Width="229" Height="53" FontFamily="Calibri" FontSize="18" FontWeight="Bold" Click="ClearBtn_Click"/>
+        <Button x:Name="taskBtn" Content="Fetch Data (with Task)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="229" RenderTransformOrigin="0.004,-0.503" Height="57" FontSize="18" FontWeight="Bold" FontFamily="Calibri" Click="taskBtn_Click"/>
+        <Button x:Name="AwaitBtn" Content="Fetch Data (with await)" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="229" Height="57" FontFamily="Calibri" FontSize="18" FontWeight="Bold" Click="AwaitBtn_Click"/>
+        <Button x:Name="ClearBtn" Content="Clear Data" HorizontalAlignment="Left" Margin="10,543,0,0" VerticalAlignment="Top" Width="229" Height="39" FontFamily="Calibri" FontSize="18" FontWeight="Bold" Click="ClearBtn_Click"/>
         <ListBox x:Name="listBox" Grid.Row="0"
                      Margin="267,10,10,10"
                      BorderBrush="DarkSlateGray" BorderThickness="1"
@@ -22,11 +22,13 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <Button x:Name="DeadloackBtn" Content="Crate a Deadlock" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="229" Click="DeadlockBtn_Click" Height="40" FontFamily="Calibri" FontSize="18" FontWeight="Bold"/>
-        <Button x:Name="AsyncParallel" Content="Use paralel programming &#xA;with await" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="229" Click="AsyncParallel_Click" Height="54" FontFamily="Calibri" FontSize="18" FontWeight="Bold"/>
-        <Label x:Name="Timelbl" Content="Time elapsed:&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="15,436,0,0" VerticalAlignment="Top" Width="100" Height="30" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="timeValueLbl" HorizontalAlignment="Left" Margin="120,436,0,0" VerticalAlignment="Top" Height="31" Width="119" FontFamily="Calibri" FontSize="16"/>
-        <Button x:Name="MultipleAsync" Content="Multiples await calls" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="229" Click="MultipleAsync_Click" Height="54" FontFamily="Calibri" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="DeadloackBtn" Content="Crate a Deadlock" HorizontalAlignment="Left" Margin="10,333,0,0" VerticalAlignment="Top" Width="229" Click="DeadlockBtn_Click" Height="40" FontFamily="Calibri" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="AsyncParallel" Content="Use paralel programming &#xA;with await" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" Width="229" Click="AsyncParallel_Click" Height="54" FontFamily="Calibri" FontSize="18" FontWeight="Bold"/>
+        <Label x:Name="Timelbl" Content="Time elapsed:&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="15,262,0,0" VerticalAlignment="Top" Width="100" Height="30" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="timeValueLbl" HorizontalAlignment="Left" Margin="120,262,0,0" VerticalAlignment="Top" Height="31" Width="119" FontFamily="Calibri" FontSize="16"/>
+        <Button x:Name="MultipleAsync" Content="Multiples await calls" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top" Width="229" Click="MultipleAsync_Click" Height="54" FontFamily="Calibri" FontSize="18" FontWeight="Bold"/>
+        <Button x:Name="CancelableBtn" Content="Cancelable fetch data" HorizontalAlignment="Left" Margin="15,424,0,0" VerticalAlignment="Top" Width="224" Height="40" FontFamily="Calibri" FontSize="18" FontWeight="Bold" Click="CancelableBtn_Click"/>
+        <Button x:Name="CancelBtn" Content="Cancel data" HorizontalAlignment="Left" Margin="15,469,0,0" VerticalAlignment="Top" Width="224" Height="40" FontFamily="Calibri" FontSize="18" FontWeight="Bold" Click="CancelBtn_Click" IsEnabled="False"/>
 
     </Grid>
 </Window>

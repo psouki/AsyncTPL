@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +17,8 @@ namespace AsyncApp
     public partial class MainWindow
     {
         readonly Repository _repository = new Repository();
+        private CancellationTokenSource _cancellationTokenSource;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -182,6 +185,37 @@ namespace AsyncApp
             timeValueLbl.Content = $"{sw.ElapsedMilliseconds} milliseconds";
         }
 
+        private async void CancelableBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearListBox();
+            _cancellationTokenSource = new CancellationTokenSource();
+            CancelBtn.IsEnabled = true;
 
+            try
+            {
+                IEnumerable<News> news = await _repository.GetNews("?tagName=Photos", _cancellationTokenSource.Token);
+                foreach (News item in news)
+                {
+                    listBox.Items.Add(item);
+                }
+            }
+            catch (OperationCanceledException ex)
+            {
+                MessageBox.Show(ex.Message, "Canceled !");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception !");
+            }
+            finally
+            {
+                CancelBtn.IsEnabled = false;
+            }
+        }
+
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _cancellationTokenSource.Cancel();
+        }
     }
 }
